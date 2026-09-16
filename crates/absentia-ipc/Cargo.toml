@@ -1,0 +1,31 @@
+[package]
+name = "absentia-ipc"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+serde.workspace = true
+uuid.workspace = true
+absentia-core = { path = "../absentia-core" }
+absentia-audit = { path = "../absentia-audit" }
+absentia-auth = { path = "../absentia-auth" }
+absentia-destroy = { path = "../absentia-destroy" }
+absentia-journal = { path = "../absentia-journal" }
+absentia-policy = { path = "../absentia-policy" }
+absentia-presence = { path = "../absentia-presence" }
+absentia-sanitize = { path = "../absentia-sanitize" }
+absentia-vault = { path = "../absentia-vault" }
+absentia-secure-memory = { path = "../absentia-secure-memory" }
+
+absentia-split = { path = "../absentia-split" }
+absentia-remote = { path = "../absentia-remote" }
+absentia-format = { path = "../absentia-format" }
+absentia-kdf = { path = "../absentia-kdf" }
+
+absentia-platform = { path = "../absentia-platform" }
+
+[dev-dependencies]
+tempfile = "3"
+absentia-compress = { path = "../absentia-compress" }
+absentia-crypto = { path = "../absentia-crypto" }

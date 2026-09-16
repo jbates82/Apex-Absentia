@@ -1,0 +1,11 @@
+[package]
+name = "absentia-audit"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+sha2.workspace = true
+uuid.workspace = true
+absentia-core = { path = "../absentia-core" }
+absentia-crypto = { path = "../absentia-crypto" }

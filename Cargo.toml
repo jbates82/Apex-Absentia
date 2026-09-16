@@ -1,0 +1,47 @@
+[workspace]
+resolver = "2"
+# The fuzz targets need nightly, so they are not part of the normal build.
+exclude = ["fuzz"]
+members = [
+    "crates/absentia-core",
+    "crates/absentia-secure-memory",
+    "crates/absentia-kdf",
+    "crates/absentia-crypto",
+    "crates/absentia-compress",
+    "crates/absentia-format",
+    "crates/absentia-auth",
+    "crates/absentia-presence",
+    "crates/absentia-policy",
+    "crates/absentia-journal",
+    "crates/absentia-sanitize",
+    "crates/absentia-destroy",
+    "crates/absentia-ipc",
+    "crates/absentia-platform",
+    "crates/absentia-enterprise",
+    "crates/absentia-split",
+    "crates/absentia-remote",
+    "crates/absentia-audit",
+    "crates/absentia-vault",
+    "apps/absentia-cli",
+    "apps/absentia-service",
+    "apps/absentia-desktop",
+]
+
+[workspace.package]
+version = "0.22.0"
+edition = "2021"
+license = "Apache-2.0"
+rust-version = "1.75"
+
+[workspace.dependencies]
+thiserror = "1"
+serde = { version = "1", features = ["derive"] }
+zeroize = { version = "1.7", features = ["derive"] }
+rand = "0.8"
+uuid = { version = "1.10", features = ["v4", "serde"] }
+sha2 = "0.10"
+hkdf = "0.12"
+subtle = "2.5"
+
+[profile.release]
+overflow-checks = true

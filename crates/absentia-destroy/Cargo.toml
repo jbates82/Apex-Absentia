@@ -1,0 +1,20 @@
+[package]
+name = "absentia-destroy"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+rand.workspace = true
+uuid.workspace = true
+absentia-core = { path = "../absentia-core" }
+absentia-crypto = { path = "../absentia-crypto" }
+absentia-format = { path = "../absentia-format" }
+absentia-journal = { path = "../absentia-journal" }
+absentia-policy = { path = "../absentia-policy" }
+absentia-sanitize = { path = "../absentia-sanitize" }
+absentia-platform = { path = "../absentia-platform" }
+
+[dev-dependencies]
+absentia-vault = { path = "../absentia-vault" }
+absentia-kdf = { path = "../absentia-kdf" }

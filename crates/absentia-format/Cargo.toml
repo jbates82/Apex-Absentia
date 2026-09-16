@@ -1,0 +1,15 @@
+[package]
+name = "absentia-format"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+uuid.workspace = true
+serde.workspace = true
+absentia-core = { path = "../absentia-core" }
+absentia-crypto = { path = "../absentia-crypto" }
+absentia-compress = { path = "../absentia-compress" }
+absentia-kdf = { path = "../absentia-kdf" }
+absentia-auth = { path = "../absentia-auth" }
+absentia-secure-memory = { path = "../absentia-secure-memory" }

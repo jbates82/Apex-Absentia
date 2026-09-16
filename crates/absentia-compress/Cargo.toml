@@ -1,0 +1,10 @@
+[package]
+name = "absentia-compress"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+zstd = "0.13"
+serde.workspace = true
+absentia-core = { path = "../absentia-core" }

@@ -1,0 +1,20 @@
+[package]
+name = "absentia-service"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "absd"
+path = "src/main.rs"
+
+[dependencies]
+absentia-core = { path = "../../crates/absentia-core" }
+absentia-audit = { path = "../../crates/absentia-audit" }
+absentia-auth = { path = "../../crates/absentia-auth" }
+absentia-journal = { path = "../../crates/absentia-journal" }
+absentia-policy = { path = "../../crates/absentia-policy" }
+absentia-presence = { path = "../../crates/absentia-presence" }
+absentia-destroy = { path = "../../crates/absentia-destroy" }
+absentia-sanitize = { path = "../../crates/absentia-sanitize" }
+absentia-platform = { path = "../../crates/absentia-platform" }

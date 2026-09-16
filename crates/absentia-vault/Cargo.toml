@@ -1,0 +1,24 @@
+[package]
+name = "absentia-vault"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+uuid.workspace = true
+absentia-core = { path = "../absentia-core" }
+absentia-crypto = { path = "../absentia-crypto" }
+absentia-compress = { path = "../absentia-compress" }
+absentia-format = { path = "../absentia-format" }
+absentia-kdf = { path = "../absentia-kdf" }
+absentia-auth = { path = "../absentia-auth" }
+absentia-split = { path = "../absentia-split" }
+absentia-secure-memory = { path = "../absentia-secure-memory" }
+
+[dev-dependencies]
+tempfile = "3"
+absentia-format = { path = "../absentia-format" }
+absentia-auth = { path = "../absentia-auth", features = ["test-authenticator"] }
+absentia-split = { path = "../absentia-split" }
+absentia-secure-memory = { path = "../absentia-secure-memory" }
+absentia-kdf = { path = "../absentia-kdf" }

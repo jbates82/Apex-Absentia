@@ -1,0 +1,30 @@
+[package]
+name = "absentia-cli"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[[bin]]
+name = "abs"
+path = "src/main.rs"
+
+[dependencies]
+absentia-core = { path = "../../crates/absentia-core" }
+absentia-crypto = { path = "../../crates/absentia-crypto" }
+absentia-compress = { path = "../../crates/absentia-compress" }
+absentia-kdf = { path = "../../crates/absentia-kdf" }
+absentia-vault = { path = "../../crates/absentia-vault" }
+absentia-secure-memory = { path = "../../crates/absentia-secure-memory" }
+rpassword = "7"
+absentia-audit = { path = "../../crates/absentia-audit" }
+absentia-auth = { path = "../../crates/absentia-auth" }
+absentia-presence = { path = "../../crates/absentia-presence" }
+absentia-policy = { path = "../../crates/absentia-policy" }
+absentia-journal = { path = "../../crates/absentia-journal" }
+absentia-destroy = { path = "../../crates/absentia-destroy" }
+absentia-sanitize = { path = "../../crates/absentia-sanitize" }
+absentia-platform = { path = "../../crates/absentia-platform" }
+absentia-enterprise = { path = "../../crates/absentia-enterprise" }
+absentia-split = { path = "../../crates/absentia-split" }
+absentia-format = { path = "../../crates/absentia-format" }
+absentia-remote = { path = "../../crates/absentia-remote" }

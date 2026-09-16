@@ -1,0 +1,9 @@
+[package]
+name = "absentia-sanitize"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+rand.workspace = true
+absentia-core = { path = "../absentia-core" }

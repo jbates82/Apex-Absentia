@@ -1,0 +1,16 @@
+[package]
+name = "absentia-auth"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+sha2.workspace = true
+hkdf.workspace = true
+serde.workspace = true
+absentia-core = { path = "../absentia-core" }
+absentia-crypto = { path = "../absentia-crypto" }
+absentia-secure-memory = { path = "../absentia-secure-memory" }
+
+[features]
+test-authenticator = []

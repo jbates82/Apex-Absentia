@@ -1,0 +1,37 @@
+[package]
+name = "absentia-fuzz"
+version = "0.0.0"
+edition = "2021"
+publish = false
+
+[package.metadata]
+cargo-fuzz = true
+
+[dependencies]
+libfuzzer-sys = "0.4"
+absentia-format = { path = "../crates/absentia-format" }
+absentia-split = { path = "../crates/absentia-split" }
+
+[[bin]]
+name = "header"
+path = "fuzz_targets/header.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "manifest"
+path = "fuzz_targets/manifest.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "split_bundle"
+path = "fuzz_targets/split_bundle.rs"
+test = false
+doc = false
+
+[[bin]]
+name = "recovery_token"
+path = "fuzz_targets/recovery_token.rs"
+test = false
+doc = false

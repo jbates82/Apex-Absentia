@@ -1,0 +1,10 @@
+[package]
+name = "absentia-platform"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[dependencies]
+absentia-core = { path = "../absentia-core" }
+absentia-sanitize = { path = "../absentia-sanitize" }
+absentia-crypto = { path = "../absentia-crypto" }
