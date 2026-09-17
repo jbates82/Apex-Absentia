@@ -1,0 +1,293 @@
+================================================================================
+WHO APEX ABSENTIA IS FOR
+And, just as importantly, who it is not for
+================================================================================
+
+Absentia does two things most encryption tools do not.
+
+It keeps a secret that needs more than one piece to open, so that stealing your
+computer and guessing your password is not enough.
+
+And it can destroy that secret if you stop checking in.
+
+That second part is unusual, and it is the reason this document exists. A tool
+that can erase your own files is right for some people and actively wrong for
+others, and knowing which you are matters more than any feature list.
+
+Everything below is a description of a real situation. Find the one that sounds
+like yours.
+
+
+================================================================================
+PART ONE: PEOPLE WHO HOLD SOMETHING THAT ISN'T THEIRS
+================================================================================
+
+If somebody trusted you with information, you are carrying a risk on their
+behalf. They cannot check whether your laptop is encrypted. They just have to
+hope.
+
+JOURNALISTS
+
+    You have a source. Their name, their messages, the documents they took a
+    risk to hand you. If your notes are read, you are inconvenienced and they
+    may lose their job, their liberty, or worse.
+
+    Absentia helps in two ways. Split keys mean somebody who takes your laptop
+    and works out your password still cannot open the file, because one of the
+    pieces is on a USB key in a drawer at home. And if you are detained and
+    cannot get to a computer for three days, the material destroys itself
+    rather than waiting patiently for somebody to break it.
+
+    The duress password matters here too. Somebody demanding you open your
+    laptop sees a vault open onto ordinary files, and what actually mattered is
+    already gone.
+
+LAWYERS AND PARALEGALS
+
+    Privileged client material, case files, settlement discussions, things
+    told to you in confidence that could ruin somebody if repeated.
+
+    A stolen laptop is a disclosure event with professional consequences. Split
+    keys mean the theft alone is not enough, and the audit log gives you
+    something to say about what was and was not accessed rather than having to
+    assume the worst.
+
+DOCTORS, THERAPISTS AND COUNSELORS
+
+    Session notes. Diagnoses. The things people tell you they have told nobody
+    else.
+
+    You probably carry some of this on a laptop because the alternative is
+    working only at the office. Encryption at rest is the minimum; a vault that
+    also requires a second piece means a bag stolen from a car is not a breach
+    of every patient you have ever seen.
+
+CLERGY
+
+    Confessions, pastoral conversations, family crises. In many traditions this
+    is a duty you cannot be released from.
+
+    The same reasoning as therapists, with the added point that you are
+    unlikely to have an IT department.
+
+HR AND WORKPLACE INVESTIGATORS
+
+    Complaints, witness statements, investigation notes. People spoke to you
+    because they believed it would stay contained.
+
+    Leaks here cause real harm to people who took a risk by speaking up. A
+    vault whose contents cannot be opened by a single password is a reasonable
+    answer to "how do I know this won't get out".
+
+ACCOUNTANTS AND FINANCIAL ADVISORS
+
+    Client tax records, account numbers, identity documents. A lost laptop is
+    somebody else's identity theft, not yours.
+
+
+================================================================================
+PART TWO: PEOPLE FOR WHOM BEING FOUND OUT IS DANGEROUS
+================================================================================
+
+For the people in this section, the deadman switch is not a curiosity. It is
+the whole point.
+
+PEOPLE DOCUMENTING ABUSE
+
+    You are keeping a record: photographs, messages, dates, a diary of what has
+    happened. It is evidence, and you need it. It is also the single most
+    dangerous thing in your home if it is found.
+
+    Absentia lets that record exist without existing obviously. The vault gives
+    nothing away about what it holds. A duress password opens it onto something
+    innocuous if you are made to unlock it. And if something happens to you and
+    you cannot check in, it does not sit there waiting to be discovered.
+
+    Please read the warnings about accidental destruction carefully. Set a
+    generous deadline. This is a situation where losing your own evidence would
+    be its own disaster.
+
+WHISTLEBLOWERS
+
+    You have taken something you were not supposed to take, for reasons you
+    believe are right. You may be one of very few people who could have taken
+    it.
+
+    A search of your home and machines is a realistic outcome. Split keys mean
+    the search is not enough. The deadman switch means that if you are arrested
+    and held, the material does not sit waiting.
+
+ACTIVISTS AND ORGANIZERS
+
+    Membership lists, meeting notes, plans, contact details. In many places
+    these endanger everybody on them and not only you.
+
+    The custodian feature is designed for exactly this: a piece of the key held
+    by somebody in another country, released only while you keep checking in.
+    Seizing your machine gains nothing, and neither does waiting.
+
+RESEARCHERS AND AID WORKERS IN HOSTILE PLACES
+
+    Interview recordings, names of people who talked to you, location data.
+    The people who spoke to you did so at a risk they may not fully have
+    understood.
+
+    Border crossings are the specific problem. A duress password gives you
+    something to hand over.
+
+PEOPLE CROSSING BORDERS
+
+    Not only in dramatic circumstances. Many countries can require you to
+    unlock a device, and refusing has consequences.
+
+    A duress password means you can comply. The officer sees a vault open onto
+    holiday photographs and a shopping list.
+
+    Be clear-eyed: this is not magic. If somebody images your drive and
+    examines it later, a mostly empty container raises a question. It works
+    against somebody watching your screen, which is the common case.
+
+
+================================================================================
+PART THREE: PEOPLE PLANNING FOR NOT BEING HERE
+================================================================================
+
+This is the use the name comes from. Absentia means judgment passed on somebody
+who is not present.
+
+PEOPLE WITH A SERIOUS DIAGNOSIS
+
+    You are thinking clearly now about a time when you may not be able to.
+    Some things you want your family to have. Some things you very much do not.
+
+    Absentia handles the second kind. Letters that were never sent. A diary.
+    Photographs. Records of something you dealt with alone and do not want
+    discovered while people are grieving.
+
+    Check in weekly for as long as you are able. When you stop, it goes.
+
+ANYBODY WITH SOMETHING THEY WANT TO TAKE WITH THEM
+
+    You do not need a diagnosis for this. Most people who have lived a while
+    have something they would rather not have read aloud after a funeral:
+    correspondence, a record of a difficult period, something about somebody
+    else that was never theirs to share.
+
+    The ordinary options are bad. Deleting it feels like destroying the only
+    record. Keeping it means somebody finds it. A vault that quietly closes
+    itself after you stop checking in is a genuine third option.
+
+PEOPLE IN DANGEROUS WORK
+
+    Soldiers, correspondents, people who go to places with a real chance of not
+    returning. The material you carry should not outlive you and fall into
+    whoever picks it up.
+
+EXECUTORS AND THE ORGANIZED
+
+    A slightly different shape: you want some things destroyed and other things
+    found. Absentia handles the destruction half well. For the delivery half,
+    use it alongside a proper will and a lawyer. It does not deliver anything
+    to anybody.
+
+
+================================================================================
+PART FOUR: ORDINARY PEOPLE WITH ORDINARY SECRETS
+================================================================================
+
+None of the above needs to apply for this to be useful.
+
+SOMEBODY WITH A PASSWORD FILE
+
+    Nearly everybody has one, and most of them are a text file or a note on a
+    phone. A vault is strictly better and not much harder.
+
+    Split keys are the real benefit here: somebody who takes your laptop and
+    works out your login still does not get everything else you own.
+
+SMALL BUSINESS OWNERS
+
+    Customer records, supplier pricing, your own accounts, the details that
+    would let somebody impersonate your business. You have no IT department and
+    no security budget.
+
+FAMILIES WITH SENSITIVE PAPERWORK
+
+    Immigration documents, adoption records, medical histories, the paperwork
+    of a difficult divorce. Things you need to keep and do not want lying
+    around.
+
+PEOPLE WHO SIMPLY DISLIKE BEING READ
+
+    That is a sufficient reason. You do not have to justify wanting a private
+    place on your own computer.
+
+
+================================================================================
+WHO THIS IS NOT FOR
+================================================================================
+
+This part is as important as everything above. The wrong tool confidently
+applied is worse than no tool.
+
+ANYBODY WHO CANNOT AFFORD TO LOSE THE FILES
+
+    If the contents are irreplaceable and losing them would be a disaster,
+    think very hard before enabling the deadman switch, and possibly do not use
+    a vault with one at all.
+
+    It will do what you told it. If you are in hospital for a fortnight, or
+    travelling somewhere without a computer, or simply forget, it destroys your
+    files and nobody can undo it. That is not a malfunction.
+
+    If you want the files protected but definitely kept, use full-disk
+    encryption and leave the deadman switch off. That is a perfectly reasonable
+    way to use this.
+
+ANYBODY WHO FORGETS THINGS
+
+    Said kindly, because it applies to most of us some of the time. A deadman
+    switch is a commitment to a routine. If you know you will not keep it, the
+    tool is not wrong for you but the feature is.
+
+ANYBODY WHO NEEDS AUDITED SOFTWARE TODAY
+
+    Absentia has not been independently reviewed by cryptographers. That is
+    stated everywhere in this project because it is the most important thing
+    about it. If you are handling material where a professional review is a
+    requirement, use something that has had one. VeraCrypt and Cryptomator both
+    have.
+
+ANYBODY WHO NEEDS TO HIDE THAT A VAULT EXISTS
+
+    Absentia does not attempt this. The vault file is visible, and so are the
+    files beside it. What is hidden is the contents, and whether a duress
+    password exists. If the existence of an encrypted file is itself
+    incriminating where you are, you need a tool built for deniability.
+
+ANYBODY EXPECTING PROTECTION FROM A COMPROMISED COMPUTER
+
+    If somebody is already inside your machine while a vault is open, they can
+    read what you can read. No vault fixes that.
+
+ANYBODY WHO HAS NOT READ "BEFORE THE VAULT"
+
+    Not a joke. The file existed on your disk before it went into the vault,
+    and traces of it are probably still there. docs/BEFORE-THE-VAULT.txt
+    explains what to do about that, and for most people it matters more than
+    anything in this document.
+
+
+================================================================================
+THE SHORT VERSION
+================================================================================
+
+Use Absentia if you are holding something that would harm somebody if it were
+read, and you want it to be safe now and gone if you stop being around to look
+after it.
+
+Do not use the deadman switch if losing the files would be worse than somebody
+reading them.
+
+And turn on full-disk encryption regardless of what you decide about this
+program. It does more for you than any single thing here.
