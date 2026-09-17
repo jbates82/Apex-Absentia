@@ -1,0 +1,10 @@
+C:\Users\Amy\Desktop\Apps\Absentia\Absentia Repo\apex-absentia-v0.23.1\apex-absentia\target\release\deps\owned_ttf_parser-4f8a17a0c30cde24.d: C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\owned_ttf_parser-0.25.1\src\lib.rs C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\owned_ttf_parser-0.25.1\src\convert.rs C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\owned_ttf_parser-0.25.1\src\owned.rs C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\owned_ttf_parser-0.25.1\src\preparse.rs
+
+C:\Users\Amy\Desktop\Apps\Absentia\Absentia Repo\apex-absentia-v0.23.1\apex-absentia\target\release\deps\libowned_ttf_parser-4f8a17a0c30cde24.rlib: C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\owned_ttf_parser-0.25.1\src\lib.rs C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\owned_ttf_parser-0.25.1\src\convert.rs C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\owned_ttf_parser-0.25.1\src\owned.rs C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\owned_ttf_parser-0.25.1\src\preparse.rs
+
+C:\Users\Amy\Desktop\Apps\Absentia\Absentia Repo\apex-absentia-v0.23.1\apex-absentia\target\release\deps\libowned_ttf_parser-4f8a17a0c30cde24.rmeta: C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\owned_ttf_parser-0.25.1\src\lib.rs C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\owned_ttf_parser-0.25.1\src\convert.rs C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\owned_ttf_parser-0.25.1\src\owned.rs C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\owned_ttf_parser-0.25.1\src\preparse.rs
+
+C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\owned_ttf_parser-0.25.1\src\lib.rs:
+C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\owned_ttf_parser-0.25.1\src\convert.rs:
+C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\owned_ttf_parser-0.25.1\src\owned.rs:
+C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\owned_ttf_parser-0.25.1\src\preparse.rs:

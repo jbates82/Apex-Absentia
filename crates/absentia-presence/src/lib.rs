@@ -403,3 +403,67 @@ mod tests {
         assert_eq!(e.assess(later).confidence, 0, "rollback must not restore presence");
     }
 }
+
+
+/// How long a policy should treat a vault as having been silent.
+///
+/// # The bug this exists to prevent
+///
+/// A vault that has never been checked into has no strong signal, so the age
+/// of the last one was reported as `u64::MAX`. Every timeout is smaller than
+/// that, so enabling a deadman policy on a fresh vault armed it instantly, and
+/// a service running with permission destroyed it on its next tick. A vault
+/// created, configured and destroyed inside a minute.
+///
+/// The answer is that "never checked in" is not the same as "silent for ever".
+/// A countdown has to start somewhere, and the only sensible place is the
+/// moment the owner asked for one. So absence is measured from the newest
+/// strong signal when there is one, and otherwise from when the policy was
+/// enabled, falling back to when the vault was created.
+///
+/// This cannot extend a deadline: every fallback is a real recorded time in
+/// the past, and a genuine check-in always supersedes it.
+pub fn seconds_absent(
+    last_strong_age: Option<u64>,
+    policy_enabled_age: Option<u64>,
+    vault_age: Option<u64>,
+) -> u64 {
+    if let Some(age) = last_strong_age {
+        return age;
+    }
+    // The most recent of the remaining anchors, because the countdown starts
+    // at the latest point the owner was demonstrably making decisions.
+    match (policy_enabled_age, vault_age) {
+        (Some(a), Some(b)) => a.min(b),
+        (Some(a), None) => a,
+        (None, Some(b)) => b,
+        (None, None) => 0,
+    }
+}
+
+#[cfg(test)]
+mod absence_tests {
+    use super::seconds_absent;
+
+    #[test]
+    fn a_vault_never_checked_into_is_not_infinitely_silent() {
+        // The whole bug in one assertion. This used to be u64::MAX, which is
+        // past every possible timeout.
+        assert_eq!(seconds_absent(None, Some(30), Some(90)), 30);
+        assert_eq!(seconds_absent(None, None, Some(90)), 90);
+        assert_eq!(seconds_absent(None, Some(30), None), 30);
+    }
+
+    #[test]
+    fn a_real_check_in_always_wins() {
+        assert_eq!(seconds_absent(Some(5), Some(30), Some(900)), 5);
+        // Even an old one, because it is the truth about presence.
+        assert_eq!(seconds_absent(Some(4000), Some(30), Some(900)), 4000);
+    }
+
+    #[test]
+    fn nothing_recorded_at_all_reads_as_this_moment() {
+        // Better than for ever. A vault with no history has not been absent.
+        assert_eq!(seconds_absent(None, None, None), 0);
+    }
+}

@@ -619,7 +619,7 @@ fn presence_from_audit(log: &AuditLog, policy: &DeadmanPolicy) -> Result<Presenc
     ));
     for r in log.records()? {
         let kind = match r.event.as_str() {
-            ev::AUTH_SUCCESS => SignalKind::PasswordAuth,
+            ev::AUTH_SUCCESS | ev::VAULT_CREATED => SignalKind::PasswordAuth,
             "DEADMAN_CHECKIN" => SignalKind::ExplicitCheckIn,
             ev::FILE_IMPORTED | ev::FILE_EXPORTED | ev::VAULT_OPENED => {
                 SignalKind::VaultOperation
@@ -644,7 +644,23 @@ fn deadman_snapshot(path: &str) -> Result<(DeadmanPolicy, u32, u64, DeadmanState
     let now = TimeAnchor { wall: now.wall, monotonic: now.wall.max(0) as u64 };
 
     let assessment = engine.assess(now);
-    let since_strong = assessment.last_strong_age.unwrap_or(u64::MAX);
+    // A vault that has never been checked into is not one that has been
+    // silent for ever. Substituting u64::MAX here armed a fresh policy
+    // instantly, and a service with permission destroyed the vault on its
+    // next tick.
+    let records = log.records().unwrap_or_default();
+    let age_of = |ts: Option<i64>| ts.map(|t| (now.wall - t).max(0) as u64);
+    let since_strong = absentia_presence::seconds_absent(
+        assessment.last_strong_age,
+        age_of(
+            records
+                .iter()
+                .rev()
+                .find(|r| r.event == ev::POLICY_CHANGED)
+                .map(|r| r.timestamp),
+        ),
+        age_of(records.first().map(|r| r.timestamp)),
+    );
     let state = policy.evaluate(assessment.confidence, since_strong);
     Ok((policy, assessment.confidence, since_strong, state))
 }

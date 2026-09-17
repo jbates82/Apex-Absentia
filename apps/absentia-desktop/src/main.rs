@@ -2936,6 +2936,29 @@ impl App {
     }
 }
 
+/// The window and taskbar icon.
+///
+/// Built into the binary at compile time from `assets/icon.png`, so there is
+/// no file to ship alongside the program and nothing to go missing. Replace
+/// that file and rebuild to change it.
+///
+/// Returns `None` rather than failing if the image cannot be read. An icon is
+/// decoration: a vault that refused to start because a picture was malformed
+/// would be trading something that matters for something that does not.
+fn window_icon() -> Option<std::sync::Arc<egui::IconData>> {
+    // Prepared by build.rs, which copies assets/icon.png when it is there and
+    // generates one when it is not. Including the asset directly made a
+    // missing decoration into a build failure.
+    const RAW: &[u8] = include_bytes!(concat!(env!("OUT_DIR"), "/window-icon.png"));
+    let decoded = image::load_from_memory(RAW).ok()?.into_rgba8();
+    let (width, height) = decoded.dimensions();
+    Some(std::sync::Arc::new(egui::IconData {
+        rgba: decoded.into_raw(),
+        width,
+        height,
+    }))
+}
+
 fn main() -> eframe::Result<()> {
     let args: Vec<String> = std::env::args().skip(1).collect();
     let mut app = App::default();
@@ -2943,13 +2966,15 @@ fn main() -> eframe::Result<()> {
         app.open_vault(PathBuf::from(p));
     }
 
-    let options = eframe::NativeOptions {
-        viewport: egui::ViewportBuilder::default()
-            .with_inner_size([1080.0, 720.0])
-            .with_min_inner_size([900.0, 600.0])
-            .with_title("Apex Absentia"),
-        ..Default::default()
-    };
+    let mut viewport = egui::ViewportBuilder::default()
+        .with_inner_size([1080.0, 720.0])
+        .with_min_inner_size([900.0, 600.0])
+        .with_title("Apex Absentia");
+    if let Some(icon) = window_icon() {
+        viewport = viewport.with_icon(icon);
+    }
+
+    let options = eframe::NativeOptions { viewport, ..Default::default() };
 
     eframe::run_native(
         "Apex Absentia",

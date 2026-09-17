@@ -20,7 +20,7 @@ checksum = "366ffbaa4442f4684d91e2cd7c5ea7c4ed8add41959a31447066e279e432b618"
 
 [[package]]
 name = "absentia-audit"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-core",
  "absentia-crypto",
@@ -30,7 +30,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-auth"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-core",
  "absentia-crypto",
@@ -42,7 +42,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-cli"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-audit",
  "absentia-auth",
@@ -67,7 +67,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-compress"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-core",
  "serde",
@@ -76,7 +76,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-core"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "serde",
  "thiserror",
@@ -85,7 +85,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-crypto"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-core",
  "absentia-secure-memory",
@@ -99,7 +99,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-desktop"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-core",
  "absentia-ipc",
@@ -107,6 +107,7 @@ dependencies = [
  "absentia-vault",
  "eframe",
  "egui",
+ "image",
  "quick-xml",
  "rfd",
  "wayland-backend",
@@ -117,7 +118,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-destroy"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-core",
  "absentia-crypto",
@@ -134,7 +135,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-enterprise"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-core",
  "absentia-crypto",
@@ -149,7 +150,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-format"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-auth",
  "absentia-compress",
@@ -163,7 +164,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-ipc"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-audit",
  "absentia-auth",
@@ -189,7 +190,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-journal"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-core",
  "absentia-crypto",
@@ -201,7 +202,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-kdf"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-core",
  "absentia-secure-memory",
@@ -211,7 +212,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-platform"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-core",
  "absentia-crypto",
@@ -220,7 +221,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-policy"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-core",
  "absentia-presence",
@@ -229,7 +230,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-presence"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-core",
  "serde",
@@ -237,7 +238,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-remote"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-core",
  "absentia-crypto",
@@ -251,7 +252,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-sanitize"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-core",
  "rand",
@@ -259,7 +260,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-secure-memory"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-core",
  "libc",
@@ -270,7 +271,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-service"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-audit",
  "absentia-auth",
@@ -285,7 +286,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-split"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-core",
  "absentia-crypto",
@@ -299,7 +300,7 @@ dependencies = [
 
 [[package]]
 name = "absentia-vault"
-version = "0.22.0"
+version = "0.23.1"
 dependencies = [
  "absentia-auth",
  "absentia-compress",

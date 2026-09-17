@@ -1,5 +1,121 @@
 # Changelog
 
+## 0.23.1 - a new vault read no presence at all
+
+Reported: the presence bar sits low on a newly created vault rather than full.
+
+Creating a vault means choosing and confirming a password, which is the same
+evidence that somebody is present as any other authentication. It was not
+mapped to a presence signal, and creation writes no `AUTH_SUCCESS`, so a
+freshly created vault read zero presence until something else happened to it.
+
+Reproduced directly:
+
+    after create only    Presence   0 / 100
+    after import         Presence 100 / 100
+
+`VAULT_CREATED` now counts as password authentication, in all three places that
+reconstruct presence from the audit log. A vault reads full presence from the
+moment it exists.
+
+This compounded the instant-arming defect fixed in 0.23.0. A vault with no
+presence and an absence measured as infinite was the worst possible starting
+state for something that destroys on a timer, and the two together are what
+destroyed a vault twenty seconds after it was made.
+
+If the bar still reads part-full on 0.23.1, the number matters: tell me what it
+says and what had been done to the vault. The two causes found so far both
+produced zero rather than a middling value, so a reading in the fifties would
+point at something else again.
+
+## 0.23.0 - a new vault destroyed itself in twenty seconds
+
+Reported: a vault created, given an hour-long deadman policy, and destroyed
+about twenty seconds later, with the presence bar sitting in the fifties before
+anything had been configured.
+
+This is the worst defect this project has had. It destroyed data, it did so
+immediately, and it did so on the most ordinary sequence of actions there is.
+
+The cause was one substitution:
+
+    let since_strong = assessment.last_strong_age.unwrap_or(u64::MAX);
+
+A vault that has never been checked into has no strong presence signal, so the
+age of the last one was reported as nothing, and each of the three call sites
+substituted `u64::MAX`. Every timeout is smaller than that, so the policy armed
+the instant it was enabled and a service with permission destroyed the vault on
+its next tick.
+
+Never checked in is not the same as silent for ever. A countdown has to start
+somewhere and the only sensible place is the moment the owner asked for one.
+Absence is now measured from the newest strong signal when there is one, and
+otherwise from when the policy was enabled, falling back to when the vault was
+created. Every one of those is a real recorded time in the past, so none of
+them can extend a deadline, and a genuine check-in always supersedes them.
+
+Verified by repeating the reported sequence: a fresh vault with a one hour
+policy now reads NORMAL with the full hour remaining, and an armed service run
+against it leaves it alone.
+
+Also fixed, reported in the same message:
+- Destruction left the policy, split bundle, custody pointer and watch lock
+  beside a vault that no longer existed. Everything describing how to open a
+  vault now goes with it.
+
+  The audit log and state journal are deliberately kept. They are the record of
+  what happened, they hold no key material, and destroying the evidence of a
+  destruction would leave somebody unable to find out what their own program
+  did.
+
+The lesson is about the shape rather than the line. `unwrap_or` on a value
+meaning "this has never happened" turns an absence of evidence into evidence of
+the worst case, and in a program that destroys things on a timer that is the
+most dangerous default available.
+
+## 0.22.2 - a missing icon stopped the build
+
+Reported: `couldn't read apps\absentia-desktop\src\../assets/icon.png`.
+
+The icon was loaded with `include_bytes!`, which resolves at compile time and
+fails hard when the path is absent. The comment beside it said a missing icon
+would leave the default rather than stopping the program. That was true of the
+runtime path and false of the build, and the build is what anybody meets first.
+A decoration had been made into a build dependency.
+
+A build script now prepares the icon: it copies `assets/icon.png` when that is
+present and generates one when it is not, and the program includes whatever it
+produced. Replacing `assets/icon.png` still works exactly as before.
+
+The generator writes a PNG by hand, with its own CRC and Adler checksums and
+stored deflate blocks, rather than taking a dependency. It produces a larger
+file than a real encoder would, which is the right trade for something whose
+only job is to make sure a build cannot fail.
+
+Verified by deleting `assets/icon.png`, building cleanly, and confirming the
+generated file is a valid 256x256 PNG.
+
+## 0.22.1 - a window icon
+
+The window, taskbar and alt-tab switcher showed the toolkit's default letter.
+
+`apps/absentia-desktop/assets/icon.png` is now built into the program at
+compile time, so there is no file to ship alongside it and nothing to go
+missing. Replace that file and rebuild to change it. A missing or malformed
+image leaves the default icon rather than stopping the program: an icon is
+decoration, and a vault that refused to open over a picture would be trading
+something that matters for something that does not.
+
+What ships is a placeholder, a ring and a keyhole in the program's own colours,
+and is meant to be replaced.
+
+The Windows executable icon, which is what Explorer shows before anybody runs
+the program, is a separate thing needing a build script and an `.ico`. It is
+**not** set up, deliberately: it requires a Windows-only dependency that could
+not be fetched, built or tested here, and shipping untested Windows build steps
+has broken this project three times. `assets/README.md` gives the four steps,
+which take about two minutes and fail visibly if they fail at all.
+
 ## 0.22.0 - renamed to Apex Absentia
 
 ZeroTrace collided with several established projects, including security tools.

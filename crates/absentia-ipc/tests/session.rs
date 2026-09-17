@@ -729,3 +729,81 @@ fn winding_the_clock_back_across_a_restart_does_not_buy_time() {
         "winding the clock back extended the deadline"
     );
 }
+
+#[test]
+fn a_brand_new_vault_is_not_armed_the_moment_a_policy_is_enabled() {
+    // Reported from testing: a vault created, given an hour-long deadman
+    // policy, and destroyed twenty seconds later.
+    //
+    // A vault that has never been checked into has no strong presence signal,
+    // and the age of the last one was reported as u64::MAX. Every timeout is
+    // smaller than that, so the policy armed instantly and a service with
+    // permission destroyed the vault on its next tick.
+    let dir = tmp("freshpolicy");
+    let s = seeded(&dir);
+
+    let mut p = s.load_policy();
+    p.enabled = true;
+    p.timeout_seconds = 3600;
+    p.heartbeat_seconds = 1800;
+    s.save_policy(&p).unwrap();
+
+    let status = s.deadman_status().unwrap();
+    assert_ne!(status.state, "ARMED", "a fresh policy armed immediately");
+    assert!(
+        status.seconds_remaining.unwrap_or(0) > 3000,
+        "expected most of the hour to remain, got {:?}",
+        status.seconds_remaining
+    );
+    assert!(!status.terminal);
+}
+
+#[test]
+fn destruction_removes_what_describes_the_vault_and_keeps_the_record() {
+    let dir = tmp("destroysidecars");
+    let s = seeded(&dir);
+    let token = dir.join("token.txt");
+    s.enroll_split(PW, &token, Some(&dir.join("cust.txt"))).unwrap();
+    let mut p = s.load_policy();
+    p.enabled = true;
+    s.save_policy(&p).unwrap();
+
+    let armed = Session::new(dir.join("v.azv")).with_tokens(vec![token]);
+    armed.panic_destroy(PW, DESTROY_CONFIRMATION).unwrap();
+
+    let base = dir.join("v.azv");
+    for gone in ["", ".split", ".policy", ".custodian"] {
+        let path = std::path::PathBuf::from(format!("{}{gone}", base.display()));
+        assert!(!path.exists(), "{} survived destruction", path.display());
+    }
+    // Kept on purpose: the record of what happened, holding no key material.
+    for kept in [".audit", ".journal"] {
+        let path = std::path::PathBuf::from(format!("{}{kept}", base.display()));
+        assert!(path.exists(), "{} was removed", path.display());
+    }
+}
+
+#[test]
+fn presence_is_full_from_the_moment_a_vault_is_created() {
+    // Creating a vault means choosing and confirming a password, which is the
+    // same evidence of presence as any other authentication. It was not mapped
+    // to a signal, so a freshly created vault read zero presence until
+    // something else happened, and the bar in the window started far below
+    // full for no reason the owner could see.
+    let dir = tmp("freshpresence");
+    let s = Session::new(dir.join("v.azv"));
+    s.create(PW, &VaultOptions::default()).unwrap();
+
+    let after_create = s.deadman_status().unwrap();
+    assert_eq!(
+        after_create.confidence, 100,
+        "a vault just created reads {} presence",
+        after_create.confidence
+    );
+
+    // And it stays full through ordinary use rather than dropping.
+    let f = dir.join("notes.txt");
+    std::fs::write(&f, b"something").unwrap();
+    s.import(PW, &f, "notes.txt").unwrap();
+    assert_eq!(s.deadman_status().unwrap().confidence, 100);
+}

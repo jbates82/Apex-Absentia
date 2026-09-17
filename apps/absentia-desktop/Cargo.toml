@@ -9,6 +9,8 @@ name = "absentia"
 path = "src/main.rs"
 
 [dependencies]
+# Already in the tree through eframe; only the PNG decoder is needed.
+image = { version = "0.24", default-features = false, features = ["png"] }
 zeroize.workspace = true
 eframe = { version = "0.27", default-features = false, features = ["glow", "default_fonts"] }
 egui = "0.27"

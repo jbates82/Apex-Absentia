@@ -4,7 +4,7 @@
 cargo test --release
 ```
 
-287 tests pass as of v0.22.0.
+293 tests pass as of v0.23.1.
 
 ## What is tested
 
@@ -154,6 +154,17 @@ shows the decoy and the real password never works again. The decoy keeps
 working on repeated use. A vault with a duress password and one without have
 comparable, non-zeroed duress blocks. A wrong password destroys nothing. The
 container does not change size when duress fires. An empty decoy is refused.
+
+**Presence from creation.** A vault reads full presence the moment it is
+created, and stays there through ordinary use.
+
+**A fresh policy.** A brand new vault given a deadman policy is not armed
+immediately and retains most of its timeout. A never-checked-in vault reads as
+absent since the policy was enabled rather than for ever, and a real check-in
+always supersedes the fallback.
+
+**Destruction leaves the right things.** The container, split bundle, policy
+and custody pointer are removed; the audit log and journal are kept.
 
 **Replay across a restart.** A captured command is refused after the guard is
 resumed from its high-water mark, a newer command is still accepted, and the

@@ -305,12 +305,23 @@ pub fn execute(
     // key material for a container that is being destroyed, so it goes with
     // it. A copy of the vault taken beforehand needs its own copy of the
     // bundle, which is stated in the documentation.
-    let bundle = PathBuf::from(format!("{}.split", vault_path.display()));
-    if bundle.exists() {
-        if profile.overwrites_container() {
-            let _ = sanitizer.overwrite_in_place(&bundle);
+    // Everything that describes how to open this vault goes with it. The
+    // split bundle holds sealed shares of the release key, the policy and the
+    // custody pointer describe an arrangement for a container that will not
+    // exist, and a watch lock refers to a vault nothing can watch any more.
+    //
+    // The audit log and the state journal are deliberately kept. They are the
+    // record of what happened, they contain no key material, and destroying
+    // the evidence of a destruction would leave somebody unable to find out
+    // what their own program did.
+    for suffix in [".split", ".policy", ".custodian", ".watch", ".watch.stop"] {
+        let side = PathBuf::from(format!("{}{suffix}", vault_path.display()));
+        if side.exists() {
+            if profile.overwrites_container() {
+                let _ = sanitizer.overwrite_in_place(&side);
+            }
+            let _ = std::fs::remove_file(&side);
         }
-        let _ = std::fs::remove_file(&bundle);
     }
 
     report.container_removal = match std::fs::remove_file(vault_path) {

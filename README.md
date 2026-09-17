@@ -11,7 +11,7 @@ key is overwritten and everything inside becomes unreadable for good.
 
 Written in Rust. Runs on Windows, macOS and Linux. Apache 2.0.
 
-**Version 0.22.0. Not audited, not reviewed, not 1.0.** Please read
+**Version 0.23.1. Not audited, not reviewed, not 1.0.** Please read
 [what it can't do](#what-it-cant-do) before you trust it with anything you
 can't replace.
 
@@ -108,7 +108,7 @@ The three programs land in `target/release`.
 cargo test --release
 ```
 
-287 tests. `TESTING.md` says what they cover and, more usefully, what they
+293 tests. `TESTING.md` says what they cover and, more usefully, what they
 don't.
 
 ## Using it

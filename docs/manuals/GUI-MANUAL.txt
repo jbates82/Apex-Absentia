@@ -1,7 +1,7 @@
 ================================================================================
 APEX ABSENTIA
 User Manual for the Desktop Window
-Applies to version 0.22.0
+Applies to version 0.23.1
 ================================================================================
 
 This manual describes every part of the Absentia window. It assumes you have
@@ -961,5 +961,5 @@ absd
 
 
 ================================================================================
-End of manual. Version 0.22.0.
+End of manual. Version 0.23.1.
 ================================================================================

@@ -1114,7 +1114,11 @@ impl Session {
         ));
         for r in log.records()? {
             let kind = match r.event.as_str() {
-                ev::AUTH_SUCCESS => SignalKind::PasswordAuth,
+                // Creating a vault means choosing and confirming a password,
+                // which is the same evidence of presence as any other
+                // authentication. Leaving it unmapped meant a freshly created
+                // vault read zero presence until something else happened.
+                ev::AUTH_SUCCESS | ev::VAULT_CREATED => SignalKind::PasswordAuth,
                 "DEADMAN_CHECKIN" => SignalKind::ExplicitCheckIn,
                 ev::FILE_IMPORTED | ev::FILE_EXPORTED | ev::VAULT_OPENED => {
                     SignalKind::VaultOperation
@@ -1127,7 +1131,26 @@ impl Session {
             );
         }
         let a = engine.assess(self.now());
-        Ok((a.confidence, a.last_strong_age))
+        // Never checked in is not the same as silent for ever. Without a
+        // baseline this returned nothing, callers substituted u64::MAX, and a
+        // fresh policy armed the vault on the spot.
+        let now_wall = self.now().wall;
+        let records = log.records().unwrap_or_default();
+        let age_of = |ts: Option<i64>| ts.map(|t| (now_wall - t).max(0) as u64);
+        let policy_enabled_age = age_of(
+            records
+                .iter()
+                .rev()
+                .find(|r| r.event == ev::POLICY_CHANGED)
+                .map(|r| r.timestamp),
+        );
+        let vault_age = age_of(records.first().map(|r| r.timestamp));
+        let absent = absentia_presence::seconds_absent(
+            a.last_strong_age,
+            policy_enabled_age,
+            vault_age,
+        );
+        Ok((a.confidence, Some(absent)))
     }
 
     /// The vault's own identifier, read from its header.

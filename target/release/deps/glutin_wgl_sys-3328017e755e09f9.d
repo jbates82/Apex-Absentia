@@ -1,0 +1,11 @@
+C:\Users\Amy\Desktop\Apps\Absentia\Absentia Repo\apex-absentia-v0.23.1\apex-absentia\target\release\deps\glutin_wgl_sys-3328017e755e09f9.d: C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\glutin_wgl_sys-0.5.0\src\lib.rs C:\Users\Amy\Desktop\Apps\Absentia\Absentia\ Repo\apex-absentia-v0.23.1\apex-absentia\target\release\build\glutin_wgl_sys-deeff03f6632b9e7\out/wgl_bindings.rs C:\Users\Amy\Desktop\Apps\Absentia\Absentia\ Repo\apex-absentia-v0.23.1\apex-absentia\target\release\build\glutin_wgl_sys-deeff03f6632b9e7\out/wgl_extra_bindings.rs
+
+C:\Users\Amy\Desktop\Apps\Absentia\Absentia Repo\apex-absentia-v0.23.1\apex-absentia\target\release\deps\libglutin_wgl_sys-3328017e755e09f9.rlib: C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\glutin_wgl_sys-0.5.0\src\lib.rs C:\Users\Amy\Desktop\Apps\Absentia\Absentia\ Repo\apex-absentia-v0.23.1\apex-absentia\target\release\build\glutin_wgl_sys-deeff03f6632b9e7\out/wgl_bindings.rs C:\Users\Amy\Desktop\Apps\Absentia\Absentia\ Repo\apex-absentia-v0.23.1\apex-absentia\target\release\build\glutin_wgl_sys-deeff03f6632b9e7\out/wgl_extra_bindings.rs
+
+C:\Users\Amy\Desktop\Apps\Absentia\Absentia Repo\apex-absentia-v0.23.1\apex-absentia\target\release\deps\libglutin_wgl_sys-3328017e755e09f9.rmeta: C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\glutin_wgl_sys-0.5.0\src\lib.rs C:\Users\Amy\Desktop\Apps\Absentia\Absentia\ Repo\apex-absentia-v0.23.1\apex-absentia\target\release\build\glutin_wgl_sys-deeff03f6632b9e7\out/wgl_bindings.rs C:\Users\Amy\Desktop\Apps\Absentia\Absentia\ Repo\apex-absentia-v0.23.1\apex-absentia\target\release\build\glutin_wgl_sys-deeff03f6632b9e7\out/wgl_extra_bindings.rs
+
+C:\Users\Amy\.cargo\registry\src\index.crates.io-1949cf8c6b5b557f\glutin_wgl_sys-0.5.0\src\lib.rs:
+C:\Users\Amy\Desktop\Apps\Absentia\Absentia\ Repo\apex-absentia-v0.23.1\apex-absentia\target\release\build\glutin_wgl_sys-deeff03f6632b9e7\out/wgl_bindings.rs:
+C:\Users\Amy\Desktop\Apps\Absentia\Absentia\ Repo\apex-absentia-v0.23.1\apex-absentia\target\release\build\glutin_wgl_sys-deeff03f6632b9e7\out/wgl_extra_bindings.rs:
+
+# env-dep:OUT_DIR=C:\\Users\\Amy\\Desktop\\Apps\\Absentia\\Absentia Repo\\apex-absentia-v0.23.1\\apex-absentia\\target\\release\\build\\glutin_wgl_sys-deeff03f6632b9e7\\out
